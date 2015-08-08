@@ -15,6 +15,7 @@ public class shapeFactory {
 	private static Map<Integer, TetrisShape> TShapes = new HashMap<Integer, TetrisShape>();
 	private static Map<Integer, TetrisShape> ZShapes = new HashMap<Integer, TetrisShape>();
 	private static Map<Integer, Map<Integer, TetrisShape>> tetrisShapes = new HashMap<Integer, Map<Integer, TetrisShape>>();
+	private static Map<Integer, IShape> testShape = new HashMap<Integer,IShape>();
 
 	static {
 		IShapes.put(TetrisShape.POINT_LEFT, new IShape(TetrisShapeTypes.i,
@@ -88,6 +89,8 @@ public class shapeFactory {
 		tetrisShapes.put(TetrisShapeTypes.s, SShapes);
 		tetrisShapes.put(TetrisShapeTypes.t, TShapes);
 		tetrisShapes.put(TetrisShapeTypes.z, ZShapes);
+		
+		testShape.put(TetrisShapeTypes.i, new IShape());
 
 	}
 
@@ -96,7 +99,8 @@ public class shapeFactory {
 	}
 	
 	public static TetrisShape getTetrisShape(int type, int direct) {
-		return tetrisShapes.get(type).get(direct);
+		//return tetrisShapes.get(type).get(direct);
+		return testShape.get(type).newInstance(type, direct);
 	}
 
 }

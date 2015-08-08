@@ -78,5 +78,9 @@ public class IShape extends TetrisShape {
 		shape.set(3, fourthNode);
 		
 	}
+	
+	public IShape newInstance(int type, int direct){
+		return new IShape(type, direct);
+	}
 
 }

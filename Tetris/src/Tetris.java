@@ -78,7 +78,8 @@ class TetrisComponent extends JComponent
 		
 		for(ArrayList<TetrisNode> ylist : existedNodes){
 			for(TetrisNode node : ylist){
-				g2.draw(node.getTetrisNodeRect());
+				if(node != null)
+					g2.draw(node.getTetrisNodeRect());
 			}
 		}
 		
@@ -95,6 +96,7 @@ class TetrisComponent extends JComponent
 		{					
 			int type = new Random().nextInt(7);
 			int pointDirect = new Random().nextInt(4);
+			System.out.println(pointDirect);
 			type = TetrisShapeTypes.i;
 			randomShape = shapeFactory.getTetrisShape(type, pointDirect);	
 			System.out.println("make new");
@@ -151,8 +153,12 @@ class TetrisComponent extends JComponent
 	
 	private void removeBottomLine(){
 		for (ArrayList<TetrisNode> ylist : existedNodes) {
-			for (int i = 0; i < ylist.size() - 1; i++) {
-				ylist.set(i, ylist.get(i + 1));
+			if (ylist.size() == 1) {
+				ylist.set(0, null);
+			} else {
+				for (int i = 0; i < ylist.size()-1; i++) {
+					ylist.set(i, ylist.get(i + 1));
+				}
 			}
 		}
 	}
