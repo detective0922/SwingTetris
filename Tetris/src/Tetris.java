@@ -115,6 +115,9 @@ class TetrisComponent extends JComponent
 			};
 			addShapeToExist(tmpShape);
 			System.out.println("addShapeToExist");
+			if (isBottomFull()) {
+				removeBottomLine();
+			}
 			randomShape = null;
 			makeRandomShape();
 		} else {
@@ -182,9 +185,7 @@ class TetrisComponent extends JComponent
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			if (isBottomFull()) {
-				removeBottomLine();
-			}
+			
 			randomShapeMove();
 		}
 	}
