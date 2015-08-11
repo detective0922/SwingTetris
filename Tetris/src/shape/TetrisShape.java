@@ -78,6 +78,8 @@ public abstract class TetrisShape {
 	
 	public abstract void tetrisRotate(int direct);
 	
+	public abstract TetrisShape newInstance(int type, int direct);
+	
 	public List<TetrisNode> getTetrisShape(){
 		return shape;
 	}

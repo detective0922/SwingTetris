@@ -79,4 +79,10 @@ public class SShape extends TetrisShape {
 
 	}
 
+	@Override
+	public TetrisShape newInstance(int type, int direct) {
+		// TODO Auto-generated method stub
+		return new SShape(type, direct);
+	}
+
 }

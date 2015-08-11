@@ -112,6 +112,12 @@ class TetrisComponent extends JComponent
 				public void tetrisRotate(int direct) {
 					// TODO Auto-generated method stub					
 				}
+
+				@Override
+				public TetrisShape newInstance(int type, int direct) {
+					// TODO Auto-generated method stub
+					return null;
+				}
 			};
 			addShapeToExist(tmpShape);
 			System.out.println("addShapeToExist");

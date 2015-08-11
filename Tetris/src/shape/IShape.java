@@ -6,7 +6,7 @@ public class IShape extends TetrisShape {
 		// TODO Auto-generated constructor stub
 	}
 
-	public IShape(int type, int direct) {
+	private IShape(int type, int direct) {
 		super(type, direct);
 		// TODO Auto-generated constructor stub
 		thirdNode = new TetrisNode();
@@ -79,6 +79,7 @@ public class IShape extends TetrisShape {
 		
 	}
 	
+	@Override
 	public IShape newInstance(int type, int direct){
 		return new IShape(type, direct);
 	}

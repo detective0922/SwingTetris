@@ -78,4 +78,10 @@ public class JShape extends TetrisShape {
 		shape.set(3, fourthNode);
 	}
 
+	@Override
+	public TetrisShape newInstance(int type, int direct) {
+		// TODO Auto-generated method stub
+		return new JShape(type, direct);
+	}
+
 }
