@@ -10,10 +10,10 @@ import java.util.concurrent.BlockingQueue;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import shape.TetrisNode;
+import node.TetrisNode;
 import shape.TetrisShape;
 import shape.TetrisShapeTypes;
-import shape.shapeFactory;
+import tetrisMode.shapeFactory;
 
 public class Tetris {
 	public static void main(String args[]) {

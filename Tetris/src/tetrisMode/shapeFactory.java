@@ -1,4 +1,4 @@
-package TetrisMode;
+package tetrisMode;
 
 import java.util.HashMap;
 import java.util.Map;

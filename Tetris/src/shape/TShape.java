@@ -1,6 +1,6 @@
 package shape;
 
-import Node.TetrisNode;
+import node.TetrisNode;
 
 public class TShape extends TetrisShape {
 
