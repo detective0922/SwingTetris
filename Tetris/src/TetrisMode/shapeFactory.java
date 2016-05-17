@@ -1,7 +1,17 @@
-package shape;
+package TetrisMode;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import shape.IShape;
+import shape.JShape;
+import shape.LShape;
+import shape.OShape;
+import shape.SShape;
+import shape.TShape;
+import shape.TetrisShape;
+import shape.TetrisShapeTypes;
+import shape.ZShape;
 
 public class shapeFactory {
 	
