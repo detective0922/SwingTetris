@@ -1,5 +1,7 @@
 package shape;
 
+import Node.TetrisNode;
+
 public class LShape extends TetrisShape {
 
 	public LShape() {

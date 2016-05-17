@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import Node.TetrisNode;
+
 public abstract class TetrisShape {
 	
 	protected ArrayList<TetrisNode> shape = new ArrayList<TetrisNode>(4);
