@@ -1,4 +1,4 @@
-package shape;
+package Node;
 
 import java.awt.geom.Rectangle2D;
 
