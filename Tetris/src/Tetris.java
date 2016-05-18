@@ -18,7 +18,7 @@ import tetrisMode.shapeFactory;
 public class Tetris {
 	public static void main(String args[]) {
 		
-		
+		//devide to view
 		EventQueue.invokeLater(new Runnable() 
 		{
 			public void run() 
