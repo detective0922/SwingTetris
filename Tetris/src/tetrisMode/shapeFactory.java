@@ -124,6 +124,7 @@ public class shapeFactory {
 	public static TetrisShape getTetrisShape(int type, int direct) {
 		//return tetrisShapes.get(type).get(direct);
 		return tetrisShapes.get(type).newInstance(type, direct);
+		//TODO
 	}
 	
 	public static TetrisShape getTetrisShape(TetrisShape orgShape) {
