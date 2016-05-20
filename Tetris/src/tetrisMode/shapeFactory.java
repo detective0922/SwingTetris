@@ -36,15 +36,6 @@ public class shapeFactory {
 
 	static {
 		
-		
-		/*tetrisShapes.put(TetrisShapeTypes.i, IShapes);
-		tetrisShapes.put(TetrisShapeTypes.j, JShapes);
-		tetrisShapes.put(TetrisShapeTypes.l, LShapes);
-		tetrisShapes.put(TetrisShapeTypes.o, OShapes);
-		tetrisShapes.put(TetrisShapeTypes.s, SShapes);
-		tetrisShapes.put(TetrisShapeTypes.t, TShapes);
-		tetrisShapes.put(TetrisShapeTypes.z, ZShapes);*/
-		
 		tetrisShapes.put(TetrisShapeTypes.i, iShape);
 		tetrisShapes.put(TetrisShapeTypes.j, jShape);
 		tetrisShapes.put(TetrisShapeTypes.l, lShape);
