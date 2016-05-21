@@ -10,29 +10,21 @@ import common.Direction;
 public class TetrisNode {
 	
 	private Rectangle2D tetrisNodeRect;
-	private Color color;
 	private int SIDELENGTH;
-
-	/*public TetrisNode()
-	{
-		tetrisNodeRect = new Rectangle2D.Double(10, 10, SIDELENGTH, SIDELENGTH);
-	}*/
 	
 	public TetrisNode(Graphics g, int x, int y, int size, Color color) {
 		SIDELENGTH = size;
-		this.color = color;
-		tetrisNodeRect = new Rectangle2D.Double(x, y, size, size);	
-		draw(g, color);
+		tetrisNodeRect = new Rectangle2D.Double(x, y, size, size);
 	}
 	
-	private void draw(Graphics g, Color color){
+	public void draw(Graphics g, Color color){
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
 		g2.draw(tetrisNodeRect);
 		g2.fill(tetrisNodeRect);
 	}
 	
-	public void TetrisNodeMove(int DIR) {
+	public void TetrisNodeMoveByDirection(int DIR) {
 		double headx = 0;
 		double heady = 0;
 		if (DIR == Direction.DIR_UP) {
@@ -49,8 +41,18 @@ public class TetrisNode {
 			heady = tetrisNodeRect.getY();
 		}
 
-		tetrisNodeRect.setRect(headx, heady, SIDELENGTH, SIDELENGTH);
+		TetrisNodeFreeMove((int)headx, (int)heady);
+	}
+	
+	public void TetrisNodeRotate(int radius) {
 
+		double headx = tetrisNodeRect.getX() - radius;
+		double heady = tetrisNodeRect.getY() + radius;
+		TetrisNodeFreeMove((int)headx, (int)heady);
+	}
+	
+	public void TetrisNodeFreeMove(int x, int y) {
+		tetrisNodeRect.setRect(x, y, SIDELENGTH, SIDELENGTH);
 	}
 
 	
