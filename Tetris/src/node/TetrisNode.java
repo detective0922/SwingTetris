@@ -1,60 +1,50 @@
 package node;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+
+import common.Direction;
 
 public class TetrisNode {
 	
 	private Rectangle2D tetrisNodeRect;
-	public static final int DIR_UP = 0;
-	public static final int DIR_DOWN = 1;
-	public static final int DIR_LEFT = 2;
-	public static final int DIR_RIGHT = 3;	
-	public static final int NODIR = -1;
-	public static final int SIDELENGTH = 10;
+	private Color color;
+	private int SIDELENGTH;
 
-	public TetrisNode()
+	/*public TetrisNode()
 	{
 		tetrisNodeRect = new Rectangle2D.Double(10, 10, SIDELENGTH, SIDELENGTH);
+	}*/
+	
+	public TetrisNode(Graphics g, int x, int y, int size, Color color) {
+		SIDELENGTH = size;
+		this.color = color;
+		tetrisNodeRect = new Rectangle2D.Double(x, y, size, size);	
+		draw(g, color);
 	}
 	
-	public TetrisNode(TetrisNode node, int DIR) {
-		
-		double headx = 0;
-		double heady = 0;
-		if (DIR == DIR_UP) {
-			headx = node.getTetrisNodeRect().getX();
-			heady = node.getTetrisNodeRect().getY() - SIDELENGTH;
-		} else if (DIR == DIR_DOWN) {
-			headx = node.getTetrisNodeRect().getX();
-			heady = node.getTetrisNodeRect().getY() + SIDELENGTH;
-		} else if (DIR == DIR_LEFT) {
-			headx = node.getTetrisNodeRect().getX() - SIDELENGTH;
-			heady = node.getTetrisNodeRect().getY();
-		} else if (DIR == DIR_RIGHT) {
-			headx = node.getTetrisNodeRect().getX() + SIDELENGTH;
-			heady = node.getTetrisNodeRect().getY();
-		} else if(DIR == NODIR){
-			headx = node.getTetrisNodeRect().getX();
-			heady = node.getTetrisNodeRect().getY();
-		}
-
-		tetrisNodeRect = new Rectangle2D.Double(headx, heady, SIDELENGTH,
-				SIDELENGTH);
+	private void draw(Graphics g, Color color){
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(color);
+		g2.draw(tetrisNodeRect);
+		g2.fill(tetrisNodeRect);
 	}
 	
 	public void TetrisNodeMove(int DIR) {
 		double headx = 0;
 		double heady = 0;
-		if (DIR == DIR_UP) {
+		if (DIR == Direction.DIR_UP) {
 			headx = tetrisNodeRect.getX();
 			heady = tetrisNodeRect.getY() - SIDELENGTH;
-		} else if (DIR == DIR_DOWN) {
+		} else if (DIR == Direction.DIR_DOWN) {
 			headx = tetrisNodeRect.getX();
 			heady = tetrisNodeRect.getY() + SIDELENGTH;
-		} else if (DIR == DIR_LEFT) {
+		} else if (DIR == Direction.DIR_LEFT) {
 			headx = tetrisNodeRect.getX() - SIDELENGTH;
 			heady = tetrisNodeRect.getY();
-		} else if (DIR == DIR_RIGHT) {
+		} else if (DIR == Direction.DIR_RIGHT) {
 			headx = tetrisNodeRect.getX() + SIDELENGTH;
 			heady = tetrisNodeRect.getY();
 		}

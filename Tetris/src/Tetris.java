@@ -74,12 +74,13 @@ class TetrisComponent extends JComponent
 	{
 		Graphics2D g2 = (Graphics2D) g;
 		
-		g2.setColor(Color.BLUE);
+		g2.setColor(Color.BLACK);
 		
 		for(ArrayList<TetrisNode> ylist : existedNodes){
 			for(TetrisNode node : ylist){
-				if(node != null)
+				if(node != null){
 					g2.draw(node.getTetrisNodeRect());
+				}
 			}
 		}
 		

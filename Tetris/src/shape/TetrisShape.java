@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import common.Direction;
 import node.TetrisNode;
 
 public abstract class TetrisShape {
@@ -16,34 +17,14 @@ public abstract class TetrisShape {
 	protected TetrisNode thirdNode;
 	protected TetrisNode fourthNode;
 	protected static int shapeType = -1;
-	protected static int pointDirect = -1;
-	public static final int POINT_UP = 0;
-	public static final int POINT_RIGHT = 1;
-	public static final int POINT_DOWN = 2;
-	public static final int POINT_LEFT = 3;
 
 	public TetrisShape() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TetrisShape(int type, int direct) {
+	public TetrisShape(int type) {
 		// TODO Auto-generated constructor stub
 		this.shapeType = type;
-		this.pointDirect = direct;
-	}
-	
-	public TetrisShape(TetrisShape orgShape) {
-		// TODO Auto-generated constructor stub
-		this.shapeType = orgShape.getTetrisShapeType();
-		this.pointDirect = orgShape.getTetrisDirect();
-		
-		this.firstNode = new TetrisNode(orgShape.getFirstNode(), TetrisNode.NODIR);
-		this.secondNode = new TetrisNode(orgShape.getSecondNode(), TetrisNode.NODIR);
-		this.thirdNode = new TetrisNode(orgShape.getThirdNode(), TetrisNode.NODIR);
-		this.fourthNode = new TetrisNode(orgShape.getFourthNode(), TetrisNode.NODIR);
-		
-		addNoteToShape();
-		
 	}
 	
 	protected void addNoteToShape() {
@@ -62,15 +43,15 @@ public abstract class TetrisShape {
 				return false;
 		}*/
 
-		if (DIR == TetrisNode.DIR_DOWN) {
+		if (DIR == Direction.DIR_DOWN) {
 			for (TetrisNode node : shape) {
 				node.TetrisNodeMove(DIR);
 			}
-		} else if (DIR == TetrisNode.DIR_LEFT) {
+		} else if (DIR == Direction.DIR_LEFT) {
 			for (TetrisNode node : shape) {
 				node.TetrisNodeMove(DIR);
 			}
-		} else if (DIR == TetrisNode.DIR_RIGHT) {
+		} else if (DIR == Direction.DIR_RIGHT) {
 			for (TetrisNode node : shape) {
 				node.TetrisNodeMove(DIR);
 			}
