@@ -1,5 +1,7 @@
 package shape;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,55 +13,57 @@ import node.TetrisNode;
 
 public abstract class TetrisShape {
 	
-	protected ArrayList<TetrisNode> shape = new ArrayList<TetrisNode>(4);
-	protected TetrisNode firstNode;
+	protected List<TetrisNode> shape;
+	protected int gridSize;
+	/*protected TetrisNode firstNode;
 	protected TetrisNode secondNode;
 	protected TetrisNode thirdNode;
-	protected TetrisNode fourthNode;
+	protected TetrisNode fourthNode;*/
 	protected static int shapeType = -1;
 
 	public TetrisShape() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TetrisShape(int type) {
+	public TetrisShape(int type, int length, int gridSize) {
 		// TODO Auto-generated constructor stub
 		this.shapeType = type;
+		this.shape = new ArrayList<TetrisNode>(length);
+		this.gridSize = gridSize;
+		genShape(this.gridSize);
 	}
 	
-	protected void addNoteToShape() {
-		shape.add(firstNode);
-		shape.add(secondNode);
-		shape.add(thirdNode);
-		shape.add(fourthNode);
+	protected abstract void genShape(int gridSize);
+	
+	public void draw(Graphics g, Color color){
+		for (TetrisNode node : shape) {
+			node.draw(g, color);;
+		}
 	}
 	
-	public void tetrisShapeMove(/*Rectangle2D bounds, */int DIR)
+	public void tetrisShapeMove(int DIR)
 	{
-		/*(for (TetrisNode node : shape) {
-			if (node.getTetrisNodeRect().getY() >= bounds.getMaxY()
-					|| (node.getTetrisNodeRect().getY() + TetrisNode.SIDELENGTH) >= bounds
-							.getMaxY())
-				return false;
-		}*/
-
 		if (DIR == Direction.DIR_DOWN) {
 			for (TetrisNode node : shape) {
-				node.TetrisNodeMove(DIR);
+				node.TetrisNodeMoveByDirection(DIR);
 			}
 		} else if (DIR == Direction.DIR_LEFT) {
 			for (TetrisNode node : shape) {
-				node.TetrisNodeMove(DIR);
+				node.TetrisNodeMoveByDirection(DIR);
 			}
 		} else if (DIR == Direction.DIR_RIGHT) {
 			for (TetrisNode node : shape) {
-				node.TetrisNodeMove(DIR);
+				node.TetrisNodeMoveByDirection(DIR);
 			}
 		}
 		//return true;
 	}
 	
-	public abstract void tetrisRotate(int direct);
+	public void tetrisShapeRotate(){
+		for(int i = 1; i<=shape.size();i++){
+			shape.get(i).TetrisNodeRotate(gridSize*i);
+		}
+	}
 	
 	public abstract TetrisShape newInstance(int type, int direct);
 	
@@ -69,26 +73,6 @@ public abstract class TetrisShape {
 	
 	public int getTetrisShapeType(){
 		return shapeType;
-	}
-	
-	public int getTetrisDirect(){
-		return pointDirect;
-	}
-	
-	public TetrisNode getFirstNode(){
-		return firstNode;
-	}
-	
-	public TetrisNode getSecondNode(){
-		return secondNode;
-	}
-	
-	public TetrisNode getThirdNode(){
-		return thirdNode;
-	}
-	
-	public TetrisNode getFourthNode(){
-		return fourthNode;
 	}
 
 }
