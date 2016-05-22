@@ -7,9 +7,9 @@ public class IShape extends TetrisShape {
 	@Override
 	protected void initShapeIndexs() {
 		// TODO Auto-generated method stub
-		shapeIndex[0][1] = 1;
+		shapeIndex[1][0] = 1;
 		shapeIndex[1][1] = 1;
-		shapeIndex[2][1] = 1;
-		shapeIndex[3][1] = 1;
+		shapeIndex[1][2] = 1;
+		shapeIndex[1][3] = 1;
 	}
 }
