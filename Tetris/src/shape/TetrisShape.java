@@ -52,7 +52,7 @@ public abstract class TetrisShape {
 		CommUtil.transposeArray(shape);
 	}
 	
-	public abstract TetrisShape newInstance(int type, int direct);
+	//public abstract TetrisShape newInstance(int type, int direct);
 	
 	public TetrisNode[][] getTetrisShape(){
 		return shape;
