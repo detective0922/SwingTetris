@@ -68,7 +68,7 @@ public abstract class TetrisShape {
 	}
 	
 	public void tetrisShapeRotate(){
-		CommUtil.transposeArray(shape);
+		CommUtil.transposeArray(shapeIndex);
 	}
 	
 	//public abstract TetrisShape newInstance(int type, int direct);
