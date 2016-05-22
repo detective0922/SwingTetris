@@ -5,13 +5,16 @@ import node.TetrisNode;
 public class JShape extends TetrisShape {
 
 	@Override
-	protected void initShapeIndexs() {
+	protected int[][] initShapeIndexs() {
 		// TODO Auto-generated method stub
-		shapeIndex[0][0] = 1;
-		shapeIndex[1][0] = 1;
-		shapeIndex[1][1] = 1;
-		shapeIndex[1][2] = 1;
-	}
+		int[][] retArray = { 
+				{ 1, 0, 0, 0 }, 
+				{ 1, 1, 1, 0 }, 
+				{ 0, 0, 0, 0 }, 
+				{ 0, 0, 0, 0 } 
+				};
+
+		return retArray;	}
 
 	
 
