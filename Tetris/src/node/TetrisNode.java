@@ -12,18 +12,16 @@ public class TetrisNode {
 	private Rectangle2D tetrisNodeRect;
 	private int SIDELENGTH;
 	
-	public TetrisNode(/*Graphics g, int x, int y, */int size/*, Color color*/) {
+	public TetrisNode(Graphics g, int x, int y, int size) {
 		SIDELENGTH = size;
-		//tetrisNodeRect = new Rectangle2D.Double(x, y, size, size);
+		tetrisNodeRect = new Rectangle2D.Double(x, y, size, size);
 	}
 	
-	public void draw(Graphics g, int x, int y, Color color){
+	public void draw(Graphics g, Color color){
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
-		/*g2.draw(tetrisNodeRect);
-		g2.fill(tetrisNodeRect);*/
-		g2.drawRect(x, y, SIDELENGTH, SIDELENGTH);
-		g2.fillRect(x, y, SIDELENGTH, SIDELENGTH);
+		g2.draw(tetrisNodeRect);
+		g2.fill(tetrisNodeRect);
 	}
 	
 	public void TetrisNodeMoveByDirection(int DIR) {
@@ -43,13 +41,6 @@ public class TetrisNode {
 			heady = tetrisNodeRect.getY();
 		}
 
-		TetrisNodeFreeMove((int)headx, (int)heady);
-	}
-	
-	public void TetrisNodeRotate(int radius) {
-
-		double headx = tetrisNodeRect.getX() - radius;
-		double heady = tetrisNodeRect.getY() + radius;
 		TetrisNodeFreeMove((int)headx, (int)heady);
 	}
 	
