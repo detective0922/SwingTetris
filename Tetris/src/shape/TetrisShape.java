@@ -40,7 +40,7 @@ public abstract class TetrisShape {
 		for (int i = 0; i < yLen; i++) {
 			for(int j=0;j<xLen;j++){
 				if(shapeIndex[i][j] == 1){
-					shape[i][j] = new TetrisNode(g, i*gridSize, j*gridSize, gridSize);					
+					shape[i][j] = new TetrisNode(i*gridSize, j*gridSize, gridSize);					
 				}
 			}
 		}
