@@ -14,7 +14,8 @@ import node.TetrisNode;
 
 public abstract class TetrisShape {
 	
-	protected TetrisNode[][] shape = new TetrisNode[4][4];
+	protected int[][] shapeIndex = new int[4][4];
+	private TetrisNode[][] shape = new TetrisNode[4][4];
 	protected int gridSize;
 	protected static int shapeType = -1;
 
@@ -22,20 +23,35 @@ public abstract class TetrisShape {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TetrisShape(int type, int gridSize) {
+	public TetrisShape(Graphics g, int type, int gridSize) {
 		// TODO Auto-generated constructor stub
 		this.shapeType = type;
 		//this.shape = new ArrayList<TetrisNode>(length);
 		this.gridSize = gridSize;
-		genShape(this.gridSize);
+		genShape(g, this.gridSize);
 	}
 	
-	protected abstract void genShape(int gridSize);
+	protected abstract void initShapeIndexs();
 	
-	public void draw(Graphics g, Color color){
+	private void genShape(Graphics g, int gridSize) {
+		initShapeIndexs();
+		int yLen = shape.length;
+		int xLen = shape[0].length;
+		for (int i = 0; i < yLen; i++) {
+			for(int j=0;j<xLen;j++){
+				if(shapeIndex[i][j] == 1){
+					shape[i][j] = new TetrisNode(g, i*gridSize, j*gridSize, gridSize);					
+				}
+			}
+		}
+	}
+	
+	public void draw(Graphics g, Color color) {
 		for (TetrisNode[] nodes : shape) {
-			for(TetrisNode node:nodes){
-				node.draw(g, color);
+			for (TetrisNode node : nodes) {
+				if (node != null) {
+					node.draw(g, color);
+				}
 			}
 		}
 	}
@@ -43,7 +59,9 @@ public abstract class TetrisShape {
 	public void tetrisShapeMove(int DIR) {
 		for (TetrisNode[] nodes : shape) {
 			for (TetrisNode node : nodes) {
-				node.TetrisNodeMoveByDirection(DIR);
+				if (node != null) {
+					node.TetrisNodeMoveByDirection(DIR);
+				}				
 			}
 		}
 	}
