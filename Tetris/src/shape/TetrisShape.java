@@ -14,8 +14,8 @@ import node.TetrisNode;
 
 public abstract class TetrisShape {
 	
-	protected int[][] shapeIndex = new int[4][4];
-	private TetrisNode[][] shape = new TetrisNode[4][4];
+	protected int[][] shapeIndex;
+	private TetrisNode[][] shape;
 	protected int gridSize;
 	protected static int shapeType = -1;
 
@@ -31,12 +31,13 @@ public abstract class TetrisShape {
 		genShape(g, this.gridSize);
 	}
 	
-	protected abstract void initShapeIndexs();
+	protected abstract int[][] initShapeIndexs();
 	
 	private void genShape(Graphics g, int gridSize) {
-		initShapeIndexs();
-		int yLen = shape.length;
-		int xLen = shape[0].length;
+		shapeIndex = initShapeIndexs();
+		int yLen = shapeIndex.length;
+		int xLen = shapeIndex[0].length;
+		shape = new TetrisNode[yLen][xLen];
 		for (int i = 0; i < yLen; i++) {
 			for(int j=0;j<xLen;j++){
 				if(shapeIndex[i][j] == 1){
