@@ -31,5 +31,9 @@ public class tetrisMode {
 	public TetrisShape get(int row, int col) {
 		return field[row][col];
 	}
+	
+	public boolean isFull(){
+		
+	}
 
 }
