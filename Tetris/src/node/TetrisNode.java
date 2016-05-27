@@ -12,38 +12,38 @@ public class TetrisNode {
 	//private Rectangle2D tetrisNodeRect;
 	private int nodeX;
 	private int nodeY;
-	private int SIDELENGTH;
+	//private int SIDELENGTH;
 	
-	public TetrisNode(int x, int y, int size) {
-		SIDELENGTH = size;
+	public TetrisNode(int x, int y) {
+		//SIDELENGTH = size;
 		nodeX = x;
 		nodeY = y;
 	}
 	
-	public void draw(Graphics g, Color color){
+	public void draw(Graphics g, Color color, int size){
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
 		/*g2.draw(tetrisNodeRect);
 		g2.fill(tetrisNodeRect);*/
-		g2.drawRect(nodeX, nodeY, SIDELENGTH, SIDELENGTH);
-		g2.fillRect(nodeX, nodeY, SIDELENGTH, SIDELENGTH);
+		g2.drawRect(nodeX, nodeY, size, size);
+		g2.fillRect(nodeX, nodeY, size, size);
 		
 	}
 	
-	public void TetrisNodeMoveByDirection(int DIR) {
+	public void TetrisNodeMoveByDirection(int DIR, int size) {
 		double headx = 0;
 		double heady = 0;
 		if (DIR == Direction.DIR_UP) {
 			headx = nodeX;
-			heady = nodeY - SIDELENGTH;
+			heady = nodeY - size;
 		} else if (DIR == Direction.DIR_DOWN) {
 			headx = nodeX;
-			heady = nodeY + SIDELENGTH;
+			heady = nodeY + size;
 		} else if (DIR == Direction.DIR_LEFT) {
-			headx = nodeX - SIDELENGTH;
+			headx = nodeX - size;
 			heady = nodeY;
 		} else if (DIR == Direction.DIR_RIGHT) {
-			headx = nodeX + SIDELENGTH;
+			headx = nodeX + size;
 			heady = nodeY;
 		}
 
