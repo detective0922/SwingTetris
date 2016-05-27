@@ -1,5 +1,9 @@
 package tetrisMode;
 
+import java.util.List;
+import java.util.Random;
+
+import node.TetrisNode;
 import shape.TetrisShape;
 
 public class tetrisMode {
@@ -30,10 +34,6 @@ public class tetrisMode {
 	
 	public TetrisShape get(int row, int col) {
 		return field[row][col];
-	}
-	
-	public boolean isFull(){
-		
 	}
 
 }
