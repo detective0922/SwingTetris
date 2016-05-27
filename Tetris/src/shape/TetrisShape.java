@@ -12,7 +12,7 @@ import common.CommUtil;
 import common.Direction;
 import node.TetrisNode;
 
-public abstract class TetrisShape {
+public class TetrisShape {
 	
 	protected int[][] shapeIndex;
 	private TetrisNode[][] shape;
@@ -23,17 +23,20 @@ public abstract class TetrisShape {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TetrisShape(Graphics g, int type, int gridSize) {
+	public TetrisShape(/*Graphics g, */int type/*, int gridSize*/) {
 		// TODO Auto-generated constructor stub
 		this.shapeType = type;
 		//this.shape = new ArrayList<TetrisNode>(length);
-		this.gridSize = gridSize;
-		genShape(g, this.gridSize);
+		//this.gridSize = gridSize;
+		//genShape(g, this.gridSize);
+		initShapeIndexs();
 	}
 	
-	protected abstract int[][] initShapeIndexs();
+	protected int[][] initShapeIndexs(){
+		return new int[0][0];
+	}
 	
-	private void genShape(Graphics g, int gridSize) {
+	/*private void genShape(Graphics g, int gridSize) {
 		shapeIndex = initShapeIndexs();
 		int yLen = shapeIndex.length;
 		int xLen = shapeIndex[0].length;
@@ -41,28 +44,39 @@ public abstract class TetrisShape {
 		for (int i = 0; i < yLen; i++) {
 			for(int j=0;j<xLen;j++){
 				if(shapeIndex[i][j] == 1){
-					shape[i][j] = new TetrisNode(i*gridSize, j*gridSize, gridSize);					
+					shape[i][j] = new TetrisNode(i*gridSize, j*gridSize);					
 				}
 			}
 		}
-	}
+	}*/
 	
-	public void draw(Graphics g, Color color) {
-		for (TetrisNode[] nodes : shape) {
+	public void draw(Graphics g, Color color, int gridSize) {
+		/*for (TetrisNode[] nodes : shape) {
 			for (TetrisNode node : nodes) {
 				if (node != null) {
 					node.draw(g, color);
 				}
 			}
+		}*/
+		//shapeIndex = initShapeIndexs();
+		int yLen = shapeIndex.length;
+		int xLen = shapeIndex[0].length;
+		shape = new TetrisNode[yLen][xLen];
+		for (int i = 0; i < yLen; i++) {
+			for (int j = 0; j < xLen; j++) {
+				if (shapeIndex[i][j] == 1) {
+					shape[i][j] = new TetrisNode(i * gridSize, j * gridSize);
+				}
+			}
 		}
 	}
 	
-	public void tetrisShapeMove(int DIR) {
+	public void tetrisShapeMove(int DIR, int gridSize) {
 		for (TetrisNode[] nodes : shape) {
 			for (TetrisNode node : nodes) {
 				if (node != null) {
-					node.TetrisNodeMoveByDirection(DIR);
-				}				
+					node.TetrisNodeMoveByDirection(DIR, gridSize);
+				}
 			}
 		}
 	}
