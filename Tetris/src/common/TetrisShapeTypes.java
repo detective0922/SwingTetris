@@ -1,4 +1,4 @@
-package shape;
+package common;
 
 public class TetrisShapeTypes {
 	
