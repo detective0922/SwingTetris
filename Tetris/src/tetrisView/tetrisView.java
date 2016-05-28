@@ -6,6 +6,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import node.TetrisNode;
 import shape.TetrisShape;
 import tetrisMode.tetrisMode;
 
@@ -30,9 +31,9 @@ public class tetrisView extends JPanel{
 		}
 		for (int row = 0; row < mode.getHeight(); row++) {
 			for (int col = 0; col < mode.getWidth(); col++) {
-				TetrisShape shape = mode.get(row, col);
-				if (shape != null) {
-					shape.draw(g, Color.BLACK);
+				TetrisNode node = mode.getNode(row, col);
+				if (node != null) {
+					node.draw(g, Color.BLACK, col * GRID_SIZE, row * GRID_SIZE, GRID_SIZE);
 				}
 			}
 		}
