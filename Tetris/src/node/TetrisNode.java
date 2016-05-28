@@ -10,17 +10,17 @@ import common.Direction;
 public class TetrisNode {
 	
 	//private Rectangle2D tetrisNodeRect;
-	private int nodeX;
-	private int nodeY;
+	/*private int nodeX;
+	private int nodeY;*/
 	//private int SIDELENGTH;
 	
-	public TetrisNode(int x, int y) {
+	public TetrisNode(/*int x, int y*/) {
 		//SIDELENGTH = size;
-		nodeX = x;
-		nodeY = y;
+		/*nodeX = x;
+		nodeY = y;*/
 	}
 	
-	public void draw(Graphics g, Color color, int size){
+	public void draw(Graphics g, Color color,int nodeX, int nodeY, int size){
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(color);
 		/*g2.draw(tetrisNodeRect);
@@ -30,7 +30,7 @@ public class TetrisNode {
 		
 	}
 	
-	public void TetrisNodeMoveByDirection(int DIR, int size) {
+	/*public void TetrisNodeMoveByDirection(int DIR, int size) {
 		double headx = 0;
 		double heady = 0;
 		if (DIR == Direction.DIR_UP) {
@@ -53,7 +53,7 @@ public class TetrisNode {
 	public void TetrisNodeFreeMove(int x, int y) {
 		nodeX = x;
 		nodeY = y;
-	}
+	}*/
 
 	
 	/*public Rectangle2D getTetrisNodeRect()
