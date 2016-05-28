@@ -15,7 +15,7 @@ import node.TetrisNode;
 public class TetrisShape {
 	
 	protected int[][] shapeIndex;
-	private TetrisNode[][] shape;
+	//private TetrisNode[][] shape;
 	protected int gridSize;
 	protected static int shapeType = -1;
 
@@ -50,14 +50,14 @@ public class TetrisShape {
 		}
 	}*/
 	
-	public void draw(Graphics g, Color color, int gridSize) {
-		/*for (TetrisNode[] nodes : shape) {
+	/*public void draw(Graphics g, Color color, int gridSize) {
+		for (TetrisNode[] nodes : shape) {
 			for (TetrisNode node : nodes) {
 				if (node != null) {
 					node.draw(g, color);
 				}
 			}
-		}*/
+		}
 		//shapeIndex = initShapeIndexs();
 		int yLen = shapeIndex.length;
 		int xLen = shapeIndex[0].length;
@@ -69,9 +69,9 @@ public class TetrisShape {
 				}
 			}
 		}
-	}
+	}*/
 	
-	public void tetrisShapeMove(int DIR, int gridSize) {
+	/*public void tetrisShapeMove(int DIR, int gridSize) {
 		for (TetrisNode[] nodes : shape) {
 			for (TetrisNode node : nodes) {
 				if (node != null) {
@@ -79,7 +79,8 @@ public class TetrisShape {
 				}
 			}
 		}
-	}
+	}*/
+	
 	
 	public void tetrisShapeRotate(){
 		CommUtil.transposeArray(shapeIndex);
@@ -87,12 +88,16 @@ public class TetrisShape {
 	
 	//public abstract TetrisShape newInstance(int type, int direct);
 	
-	public TetrisNode[][] getTetrisShape(){
+	/*public TetrisNode[][] getTetrisShape(){
 		return shape;
-	}
+	}*/
 		
 	public int getTetrisShapeType(){
 		return shapeType;
+	}
+	
+	public int[][] getTetrisShapeIndex(){
+		return shapeIndex;
 	}
 
 }
