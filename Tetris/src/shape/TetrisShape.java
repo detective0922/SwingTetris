@@ -10,6 +10,7 @@ import java.util.Map;
 
 import common.CommUtil;
 import common.Direction;
+import common.TetrisShapeTypes;
 import node.TetrisNode;
 
 public class TetrisShape {
@@ -38,8 +39,25 @@ public class TetrisShape {
 		return new int[0][0];
 	}
 	
-	private void genShape(int type){
-		
+	private void genShape(int type) {
+		switch (type) {
+		case TetrisShapeTypes.i:
+			this.shape = new IShape();
+		case TetrisShapeTypes.j:
+			this.shape = new JShape();
+		case TetrisShapeTypes.l:
+			this.shape = new LShape();
+		case TetrisShapeTypes.o:
+			this.shape = new OShape();
+		case TetrisShapeTypes.s:
+			this.shape = new SShape();
+		case TetrisShapeTypes.t:
+			this.shape = new TShape();
+		case TetrisShapeTypes.z:
+			this.shape = new ZShape();
+		default:
+			return;
+		}
 	}
 	
 	/*private void genShape(Graphics g, int gridSize) {
