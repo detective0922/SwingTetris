@@ -18,6 +18,7 @@ public class TetrisShape {
 	//private TetrisNode[][] shape;
 	protected int gridSize;
 	protected static int shapeType = -1;
+	private TetrisShape shape;
 
 	public TetrisShape() {
 		// TODO Auto-generated constructor stub
@@ -29,11 +30,16 @@ public class TetrisShape {
 		//this.shape = new ArrayList<TetrisNode>(length);
 		//this.gridSize = gridSize;
 		//genShape(g, this.gridSize);
+		genShape(this.shapeType);
 		initShapeIndexs();
 	}
 	
 	protected int[][] initShapeIndexs(){
 		return new int[0][0];
+	}
+	
+	private void genShape(int type){
+		
 	}
 	
 	/*private void genShape(Graphics g, int gridSize) {
