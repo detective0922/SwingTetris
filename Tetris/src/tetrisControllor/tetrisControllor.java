@@ -28,7 +28,7 @@ public class tetrisControllor {
 		
 	}
 	
-	public void addShapeToMode(tetrisMode mode, TetrisShape shape){
+	/*public void addShapeToMode(tetrisMode mode, TetrisShape shape){
 		int[][] shapeIndex = shape.getTetrisShapeIndex();
 		int yLen = shapeIndex.length;
 		int xLen = shapeIndex[0].length;
@@ -48,7 +48,7 @@ public class tetrisControllor {
 	
 	public void rotateShape(tetrisMode mode, TetrisShape shape){
 		
-	}
+	}*/
 	
 	
 }

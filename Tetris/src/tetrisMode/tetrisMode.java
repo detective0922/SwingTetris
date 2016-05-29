@@ -65,5 +65,27 @@ public class tetrisMode {
 			}
 		}
 	}
+	
+	public void addShapeToMode(tetrisMode mode, TetrisShape shape){
+		int[][] shapeIndex = shape.getTetrisShapeIndex();
+		int yLen = shapeIndex.length;
+		int xLen = shapeIndex[0].length;
+		int middle = mode.getWidth() / 2;
+		for (int i = 0; i < yLen; i++) {
+			for (int j = 0; j < xLen; j++) {
+				if (shapeIndex[i][j] == 1) {
+					mode.set(middle + i, j, 1);
+				}
+			}
+		}
+	}
+	
+	public void moveShape(tetrisMode mode, TetrisShape shape){
+		
+	}
+	
+	public void rotateShape(tetrisMode mode, TetrisShape shape){
+		
+	}
 
 }
