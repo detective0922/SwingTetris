@@ -70,24 +70,37 @@ public class tetrisMode {
 		}
 	}
 	
-	public void addShapeToMode(TetrisShape shape){
+	public void addShapeToMode(TetrisShape shape, Location head){
 		int[][] shapeIndex = shape.getTetrisShapeIndex();
 		int yLen = shapeIndex.length;
 		int xLen = shapeIndex[0].length;
 		locArray = new Location[yLen][xLen];
-		int middle = this.getWidth() / 2;
 		for (int i = 0; i < yLen; i++) {
 			for (int j = 0; j < xLen; j++) {
 				if (shapeIndex[i][j] == 1) {
-					this.set(middle + i, j, 1);
+					this.set(head.getRow() + i, head.getCol() + j, 1);
 				}
-				locArray[i][j] = new Location(middle + i, j);
+				locArray[i][j] = new Location(head.getRow() + i, head.getCol() + j);
 			}
 		}
 		updateNodes();
 	}
 	
-	public void moveShape(){
+	private int[][] getShape() {
+		int yLen = locArray.length;
+		int xLen = locArray[0].length;
+		int[][] shapeIndex = new int[yLen][xLen];
+		for (int i = 0; i < yLen; i++) {
+			for (int j = 0; j < xLen; j++) {
+				int row = locArray[i][j].getRow();
+				int col = locArray[i][j].getCol();
+				shapeIndex[i][j] = field[row][col];
+			}
+		}
+		return shapeIndex;
+	}
+	
+	public void moveShape(int dir){
 		
 	}
 	
