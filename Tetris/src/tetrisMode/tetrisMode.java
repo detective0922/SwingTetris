@@ -15,6 +15,12 @@ public class tetrisMode {
 		this.height = height;
 		field = new int[height][width];
 		//nodes = new TetrisNode[height][width];
+		for ( int row = 0; row<height; row++ ) {
+			for ( int col = 0; col<width; col++ ) {
+				field[row][col] = -1;
+			}
+		}
+
 		updateShape();
 	}
 	
