@@ -3,6 +3,7 @@ package tetrisMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import common.Direction;
 import node.TetrisNode;
 import shape.TetrisShape;
 
@@ -12,20 +13,18 @@ public class tetrisMode {
 	private int height;
 	private int[][] field;
 	private TetrisNode[][] nodes;
-	private Location[][] locArray;
+	private TetrisShape shape;
+	private Location[][] shapeLoc;
 	
 	public tetrisMode(int width, int height) {
 		this.width = width;
 		this.height = height;
 		field = new int[height][width];
-		//nodes = new TetrisNode[height][width];
-		for ( int row = 0; row<height; row++ ) {
-			for ( int col = 0; col<width; col++ ) {
-				field[row][col] = -1;
-			}
-		}
-
-		updateNodes();
+		nodes = new TetrisNode[height][width];
+		shape = null;
+		shapeLoc =  new Location[0][0];
+		clear();
+		Update();
 	}
 	
 	public int getWidth() {
@@ -36,7 +35,9 @@ public class tetrisMode {
 		return height;
 	}
 	
-	private int set(int row, int col, int o) {
+	private int set(Location loc, int o) {
+		int row = loc.getRow();
+		int col = loc.getCol();
 		int ret = field[row][col];
 		field[row][col] = o;
 		if (field[row][col] == 1) {
@@ -51,14 +52,41 @@ public class tetrisMode {
 		return field[row][col];
 	}*/
 	
-	public TetrisNode getNode(int row, int col) {
-		return nodes[row][col];
+	public TetrisNode getNode(Location loc) {
+		return nodes[loc.getRow()][loc.getCol()];
 	}
 	
-	private void updateNodes() {
+	private void clear() {
+		for (int row = 0; row < height; row++) {
+			for (int col = 0; col < width; col++) {
+				field[row][col] = -1;
+				nodes[row][col] = null;
+			}
+		}
+	}
+	
+	private void Update(){
+		clear();
+		updateFieldByShape();
+		updateNodesByField();
+	}
+	
+	private void updateFieldByShape() {
+		int yLen = shapeLoc.length;
+		int xLen = shapeLoc[0].length;
+		int[][] shapeIndex = shape.getTetrisShapeIndex();
+		for (int i = 0; i < yLen; i++) {
+			for (int j = 0; j < xLen; j++) {
+				int row = shapeLoc[i][j].getRow();
+				int col = shapeLoc[i][j].getCol();
+				field[row][col] = shapeIndex[i][j];
+			}
+		}
+	}
+	
+	private void updateNodesByField() {
 		int yLen = field.length;
-		int xLen = field[0].length;
-		nodes = new TetrisNode[yLen][xLen];
+		int xLen = field[0].length;		
 		for (int i = 0; i < yLen; i++) {
 			for (int j = 0; j < xLen; j++) {
 				if (field[i][j] == 1) {
@@ -71,41 +99,66 @@ public class tetrisMode {
 	}
 	
 	public void addShapeToMode(TetrisShape shape, Location head){
-		int[][] shapeIndex = shape.getTetrisShapeIndex();
+		this.shape = shape;
+		int[][] shapeIndex = this.shape.getTetrisShapeIndex();
 		int yLen = shapeIndex.length;
 		int xLen = shapeIndex[0].length;
-		locArray = new Location[yLen][xLen];
+		shapeLoc = new Location[yLen][xLen];
 		for (int i = 0; i < yLen; i++) {
 			for (int j = 0; j < xLen; j++) {
-				if (shapeIndex[i][j] == 1) {
-					this.set(head.getRow() + i, head.getCol() + j, 1);
-				}
-				locArray[i][j] = new Location(head.getRow() + i, head.getCol() + j);
+				shapeLoc[i][j] = new Location(head.getRow() + i, head.getCol() + j);
+				this.set(shapeLoc[i][j], shapeIndex[i][j]);
 			}
 		}
-		updateNodes();
+		updateNodesByField();
 	}
 	
-	private int[][] getShape() {
-		int yLen = locArray.length;
-		int xLen = locArray[0].length;
+	/*private int[][] getShape() {
+		int yLen = shapeLoc.length;
+		int xLen = shapeLoc[0].length;
 		int[][] shapeIndex = new int[yLen][xLen];
 		for (int i = 0; i < yLen; i++) {
 			for (int j = 0; j < xLen; j++) {
-				int row = locArray[i][j].getRow();
-				int col = locArray[i][j].getCol();
+				int row = shapeLoc[i][j].getRow();
+				int col = shapeLoc[i][j].getCol();
 				shapeIndex[i][j] = field[row][col];
 			}
 		}
 		return shapeIndex;
-	}
+	}*/
 	
 	public void moveShape(int dir){
-		
+		int moveX = 0;
+		int moveY = 0;
+		if (dir == Direction.DIR_UP) {
+			moveX = 0;
+			moveY = -1;
+		} else if (dir == Direction.DIR_DOWN) {
+			moveX = 0;
+			moveY = 1;
+		} else if (dir == Direction.DIR_LEFT) {
+			moveX = -1;
+			moveY = 0;
+		} else if (dir == Direction.DIR_RIGHT) {
+			moveX = 1;
+			moveY = 0;
+		}
+		int yLen = shapeLoc.length;
+		int xLen = shapeLoc[0].length;
+		for (int i = 0; i < yLen; i++) {
+			for (int j = 0; j < xLen; j++) {
+				int row = shapeLoc[i][j].getRow();
+				int col = shapeLoc[i][j].getCol();
+				shapeLoc[i][j].setRow(row + moveX);
+				shapeLoc[i][j].setCol(col + moveY);
+			}
+		}
+		Update();
 	}
 	
 	public void rotateShape(){
-		
+		shape.tetrisShapeRotate();
+		Update();
 	}
 
 }
