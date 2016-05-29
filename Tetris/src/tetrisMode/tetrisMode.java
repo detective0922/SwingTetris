@@ -1,5 +1,8 @@
 package tetrisMode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import node.TetrisNode;
 import shape.TetrisShape;
 
@@ -9,6 +12,7 @@ public class tetrisMode {
 	private int height;
 	private int[][] field;
 	private TetrisNode[][] nodes;
+	private Location[][] locArray;
 	
 	public tetrisMode(int width, int height) {
 		this.width = width;
@@ -21,7 +25,7 @@ public class tetrisMode {
 			}
 		}
 
-		updateShape();
+		updateNodes();
 	}
 	
 	public int getWidth() {
@@ -32,7 +36,7 @@ public class tetrisMode {
 		return height;
 	}
 	
-	public int set(int row, int col, int o) {
+	private int set(int row, int col, int o) {
 		int ret = field[row][col];
 		field[row][col] = o;
 		if (field[row][col] == 1) {
@@ -51,7 +55,7 @@ public class tetrisMode {
 		return nodes[row][col];
 	}
 	
-	private void updateShape() {
+	private void updateNodes() {
 		int yLen = field.length;
 		int xLen = field[0].length;
 		nodes = new TetrisNode[yLen][xLen];
@@ -66,25 +70,28 @@ public class tetrisMode {
 		}
 	}
 	
-	public void addShapeToMode(tetrisMode mode, TetrisShape shape){
+	public void addShapeToMode(TetrisShape shape){
 		int[][] shapeIndex = shape.getTetrisShapeIndex();
 		int yLen = shapeIndex.length;
 		int xLen = shapeIndex[0].length;
-		int middle = mode.getWidth() / 2;
+		locArray = new Location[yLen][xLen];
+		int middle = this.getWidth() / 2;
 		for (int i = 0; i < yLen; i++) {
 			for (int j = 0; j < xLen; j++) {
 				if (shapeIndex[i][j] == 1) {
-					mode.set(middle + i, j, 1);
+					this.set(middle + i, j, 1);
 				}
+				locArray[i][j] = new Location(middle + i, j);
 			}
 		}
+		updateNodes();
 	}
 	
-	public void moveShape(tetrisMode mode, TetrisShape shape){
+	public void moveShape(){
 		
 	}
 	
-	public void rotateShape(tetrisMode mode, TetrisShape shape){
+	public void rotateShape(){
 		
 	}
 
