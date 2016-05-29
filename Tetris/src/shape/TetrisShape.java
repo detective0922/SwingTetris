@@ -32,7 +32,7 @@ public class TetrisShape {
 		//this.gridSize = gridSize;
 		//genShape(g, this.gridSize);
 		genShape(this.shapeType);
-		initShapeIndexs();
+		shapeIndex = shape.initShapeIndexs();
 	}
 	
 	protected int[][] initShapeIndexs(){
@@ -43,18 +43,25 @@ public class TetrisShape {
 		switch (type) {
 		case TetrisShapeTypes.i:
 			this.shape = new IShape();
+			break;
 		case TetrisShapeTypes.j:
 			this.shape = new JShape();
+			break;
 		case TetrisShapeTypes.l:
 			this.shape = new LShape();
+			break;
 		case TetrisShapeTypes.o:
 			this.shape = new OShape();
+			break;
 		case TetrisShapeTypes.s:
 			this.shape = new SShape();
+			break;
 		case TetrisShapeTypes.t:
 			this.shape = new TShape();
+			break;
 		case TetrisShapeTypes.z:
 			this.shape = new ZShape();
+			break;
 		default:
 			return;
 		}
