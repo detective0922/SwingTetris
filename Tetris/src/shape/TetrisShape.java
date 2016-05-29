@@ -17,7 +17,7 @@ public class TetrisShape {
 	protected int[][] shapeIndex;
 	//private TetrisNode[][] shape;
 	protected int gridSize;
-	protected static int shapeType = -1;
+	protected int shapeType = -1;
 	private TetrisShape shape;
 
 	public TetrisShape() {
