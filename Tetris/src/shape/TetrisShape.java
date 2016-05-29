@@ -82,9 +82,9 @@ public class TetrisShape {
 	}*/
 	
 	
-	public void tetrisShapeRotate(){
+	/*public void tetrisShapeRotate(){
 		CommUtil.transposeArray(shapeIndex);
-	}
+	}*/
 	
 	//public abstract TetrisShape newInstance(int type, int direct);
 	
