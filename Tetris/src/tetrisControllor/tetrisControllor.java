@@ -5,18 +5,17 @@ import java.util.Random;
 import common.TetrisShapeTypes;
 import node.TetrisNode;
 import shape.TetrisShape;
+import tetrisMode.Location;
 import tetrisMode.tetrisMode;
 
 public class tetrisControllor {
 	private tetrisMode mode;
-	private static final int DEFAULT_WIDTH = 256;
-	private static final int DEFAULT_HEIGHT = 256;
 	
-	public tetrisControllor() {
-		mode = new tetrisMode(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+	public tetrisControllor(tetrisMode mode) {
+		this.mode = mode;
 	}
 	
-	public TetrisShape genRandomShape() {
+	public void genRandomShape() {
 
 		int type = new Random().nextInt(7);
 		int pointDirect = new Random().nextInt(4);
@@ -24,7 +23,10 @@ public class tetrisControllor {
 		type = TetrisShapeTypes.i;
 		TetrisShape randomShape = new TetrisShape(type);
 		System.out.println("make new");
-		return randomShape;
+		int xmiddle = mode.getWidth() / 2;
+		int y = 0;
+		Location head = new Location(0, xmiddle);
+		mode.addShapeToMode(randomShape, head);
 		
 	}
 	
@@ -40,15 +42,15 @@ public class tetrisControllor {
 				}
 			}
 		}
-	}
-	
-	public void moveShape(tetrisMode mode, TetrisShape shape){
-		
-	}
-	
-	public void rotateShape(tetrisMode mode, TetrisShape shape){
-		
 	}*/
+	
+	public void moveShape(int dir){
+		mode.moveShape(dir);
+	}
+	
+	public void rotateShape(){
+		mode.rotateShape();
+	}
 	
 	
 }

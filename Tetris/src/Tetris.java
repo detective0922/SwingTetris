@@ -10,10 +10,12 @@ import java.util.concurrent.BlockingQueue;
 import javax.swing.*;
 import javax.swing.Timer;
 
+import common.Direction;
 import node.TetrisNode;
 import shape.TetrisShape;
-import shape.TetrisShapeTypes;
-import tetrisMode.shapeFactory;
+import tetrisControllor.tetrisControllor;
+import tetrisMode.tetrisMode;
+import tetrisView.tetrisView;
 
 public class Tetris {
 	public static void main(String args[]) {
@@ -52,11 +54,35 @@ class TetrisFrame extends JFrame
 
 class TetrisComponent extends JComponent
 {
+	
+	private TetrisShape randomShape;
+	private static int rowCount = 20;
+	private ArrayList<ArrayList<TetrisNode>> existedNodes = new ArrayList<ArrayList<TetrisNode>>(
+			rowCount);
+	private static final int SIDELENGTH = 10;
+	private static boolean isMoved = false;
+	private static final int DELAY = 1000;
+	private static int rotate = -1;
+	private tetrisControllor controllor;
+	private tetrisMode mode;
+	private tetrisView view;
+	
 	public TetrisComponent()
 	{
 		
-		initExistedNodes();
-		makeRandomShape();
+		this.mode = new tetrisMode(32,32);
+		this.view = new tetrisView(mode);
+		this.controllor = new tetrisControllor(mode);
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setTitle("Tetris");
+		frame.add(view);
+		frame.pack();
+		frame.setVisible(true);
+		
+		//initExistedNodes();
+		controllor.genRandomShape();
 		
 		ActionListener listener = new TimerListener();
 		Timer t = new Timer(DELAY, listener);
@@ -70,7 +96,7 @@ class TetrisComponent extends JComponent
 		
 	}
 	
-	public void paintComponent(Graphics g)
+	/*public void paintComponent(Graphics g)
 	{
 		Graphics2D g2 = (Graphics2D) g;
 		
@@ -89,9 +115,9 @@ class TetrisComponent extends JComponent
 			g2.draw(Node.getTetrisNodeRect());		
 		}
 				
-	}
+	}*/
 	
-	public void makeRandomShape()
+	/*public void makeRandomShape()
 	{
 		if(randomShape == null)
 		{					
@@ -102,9 +128,9 @@ class TetrisComponent extends JComponent
 			randomShape = shapeFactory.getTetrisShape(type, pointDirect);	
 			System.out.println("make new");
 		}	
-	}
+	}*/
 	
-	public void randomShapeMove() 
+	/*public void randomShapeMove() 
 	{
 		if (isBottom(randomShape)) {
 			TetrisShape tmpShape  = new TetrisShape(randomShape) {
@@ -132,9 +158,9 @@ class TetrisComponent extends JComponent
 		}
 		repaint();
 
-	}
+	}*/
 	
-	private boolean isBottom(TetrisShape shape)
+	/*private boolean isBottom(TetrisShape shape)
 	{
 		for(TetrisNode node : shape.getTetrisShape()){
 			double nodeX = node.getTetrisNodeRect().getCenterX();
@@ -150,7 +176,7 @@ class TetrisComponent extends JComponent
 		}
 		System.out.println("shpae scaned");
 		return false;
-	}
+	}*/
 	
 	private boolean isBottomFull() {
 		for(ArrayList<TetrisNode> ylist: existedNodes){
@@ -173,14 +199,14 @@ class TetrisComponent extends JComponent
 		}
 	}
 	
-	private void addShapeToExist(TetrisShape shape){
+	/*private void addShapeToExist(TetrisShape shape){
 		for (TetrisNode node : shape.getTetrisShape()) {
 			double nodeX = node.getTetrisNodeRect().getCenterX();
 			int xIndex = (int) (nodeX / 10);
 			existedNodes.get(xIndex).add(node);
 			System.out.println("add node");
 		}
-	}
+	}*/
 	
 	private void initExistedNodes(){
 		for (int i = 0; i < rowCount; i++) {
@@ -193,7 +219,7 @@ class TetrisComponent extends JComponent
 		public void actionPerformed(ActionEvent event)
 		{
 			
-			randomShapeMove();
+			//randomShapeMove();
 		}
 	}
 	
@@ -206,37 +232,32 @@ class TetrisComponent extends JComponent
 	        }
 	        else if(e.getKeyCode() == KeyEvent.VK_DOWN)
 	        {
-				randomShape.tetrisShapeMove(TetrisNode.DIR_DOWN);
+				//randomShape.tetrisShapeMove(TetrisNode.DIR_DOWN);
+	        	controllor.moveShape(Direction.DIR_DOWN);
 	        }
 	        else if(e.getKeyCode() == KeyEvent.VK_LEFT)
 	        {
-				randomShape.tetrisShapeMove(TetrisNode.DIR_LEFT);
-				isMoved = true;
+				/*randomShape.tetrisShapeMove(TetrisNode.DIR_LEFT);
+				isMoved = true;*/
+	        	controllor.moveShape(Direction.DIR_LEFT);
 	        }
 	        else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
 	        {
-				randomShape.tetrisShapeMove(TetrisNode.DIR_RIGHT);
-				isMoved = true;
+				/*randomShape.tetrisShapeMove(TetrisNode.DIR_RIGHT);
+				isMoved = true;*/
+	        	controllor.moveShape(Direction.DIR_RIGHT);
 	        }
 	        else if(e.getKeyCode() == KeyEvent.VK_R)
 	        {
-				rotate++;
+				/*rotate++;
 				int direct = rotate % 4;
 				randomShape.tetrisRotate(direct);
-				isMoved = true;
+				isMoved = true;*/
+	        	controllor.rotateShape();
 	        }
 	        repaint();
 	    } 
 	}
-	
-	private TetrisShape randomShape;
-	private static int rowCount = 20;
-	private ArrayList<ArrayList<TetrisNode>> existedNodes = new ArrayList<ArrayList<TetrisNode>>(
-			rowCount);
-	private static final int SIDELENGTH = 10;
-	private static boolean isMoved = false;
-	private static final int DELAY = 1000;
-	private static int rotate = -1;
 	
 }
 

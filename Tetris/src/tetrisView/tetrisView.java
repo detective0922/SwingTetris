@@ -31,7 +31,7 @@ public class tetrisView extends JPanel{
 		}
 		for (int row = 0; row < mode.getHeight(); row++) {
 			for (int col = 0; col < mode.getWidth(); col++) {
-				TetrisNode node = mode.getNode(row, col);
+				TetrisNode node = mode.getFieldNode(row, col);
 				if (node != null) {
 					node.draw(g, Color.BLACK, col * GRID_SIZE, row * GRID_SIZE, GRID_SIZE);
 				}

@@ -35,7 +35,7 @@ public class tetrisMode {
 		return height;
 	}
 	
-	private int set(Location loc, int o) {
+	private int setShapeNode(Location loc, int o) {
 		int row = loc.getRow();
 		int col = loc.getCol();
 		int ret = field[row][col];
@@ -56,6 +56,10 @@ public class tetrisMode {
 		return nodes[loc.getRow()][loc.getCol()];
 	}
 	
+	public TetrisNode getFieldNode(int row, int col) {
+		return nodes[row][col];
+	}
+	
 	private void clear() {
 		for (int row = 0; row < height; row++) {
 			for (int col = 0; col < width; col++) {
@@ -73,6 +77,9 @@ public class tetrisMode {
 	
 	private void updateFieldByShape() {
 		int yLen = shapeLoc.length;
+		if(yLen == 0){
+			return;
+		}
 		int xLen = shapeLoc[0].length;
 		int[][] shapeIndex = shape.getTetrisShapeIndex();
 		for (int i = 0; i < yLen; i++) {
@@ -107,7 +114,7 @@ public class tetrisMode {
 		for (int i = 0; i < yLen; i++) {
 			for (int j = 0; j < xLen; j++) {
 				shapeLoc[i][j] = new Location(head.getRow() + i, head.getCol() + j);
-				this.set(shapeLoc[i][j], shapeIndex[i][j]);
+				this.setShapeNode(shapeLoc[i][j], shapeIndex[i][j]);
 			}
 		}
 		updateNodesByField();
