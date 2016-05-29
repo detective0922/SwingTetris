@@ -20,7 +20,7 @@ public class tetrisControllor {
 		int type = new Random().nextInt(7);
 		int pointDirect = new Random().nextInt(4);
 		System.out.println(pointDirect);
-		type = TetrisShapeTypes.i;
+		//type = TetrisShapeTypes.i;
 		TetrisShape randomShape = new TetrisShape(type);
 		System.out.println("make new");
 		int xmiddle = mode.getWidth() / 2;

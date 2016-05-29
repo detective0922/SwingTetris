@@ -156,8 +156,9 @@ public class tetrisMode {
 			for (int j = 0; j < xLen; j++) {
 				int row = shapeLoc[i][j].getRow();
 				int col = shapeLoc[i][j].getCol();
-				shapeLoc[i][j].setRow(row + moveX);
-				shapeLoc[i][j].setCol(col + moveY);
+				shapeLoc[i][j].setCol(col + moveX);
+				shapeLoc[i][j].setRow(row + moveY);
+				
 			}
 		}
 		Update();
