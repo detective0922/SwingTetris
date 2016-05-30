@@ -10,11 +10,11 @@ public class CommUtil {
 		int[][] newArray = new int[xLen][yLen];
 		for (int i = 0; i < yLen; i++) {
 			for (int j = 0; j < xLen; j++) {
-				newArray[j][i] = intArray[i][j];
+				newArray[i][j]=intArray[xLen-j-1][i];  
 			}
 		}
 		return newArray;
+
 	}
-
-
+	
 }
