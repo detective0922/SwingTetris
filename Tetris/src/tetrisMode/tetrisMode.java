@@ -172,5 +172,9 @@ public class tetrisMode {
 	public boolean isBottomFull(){
 		return false;
 	}
+	
+	public void deleteBottom(){
+		
+	}
 
 }
