@@ -168,5 +168,9 @@ public class tetrisMode {
 		shape.tetrisShapeRotate();
 		Update();
 	}
+	
+	public boolean isBottomFull(){
+		return false;
+	}
 
 }
