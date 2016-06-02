@@ -174,7 +174,7 @@ public class tetrisMode {
 	}
 	
 	public void deleteBottom(){
-		
+		return;
 	}
 
 }
