@@ -73,6 +73,7 @@ public class tetrisMode {
 		clear();
 		updateFieldByShape();
 		updateNodesByField();
+		deleteBottom();
 	}
 	
 	private void updateFieldByShape() {
