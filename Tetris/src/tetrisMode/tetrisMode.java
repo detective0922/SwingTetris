@@ -178,6 +178,9 @@ public class tetrisMode {
 		//need to implement
 		if(isBottomFull())
 			deleteBottom();
+		else{
+			
+		}
 	}
 
 }
