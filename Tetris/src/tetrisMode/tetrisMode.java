@@ -179,7 +179,7 @@ public class tetrisMode {
 		if(isBottomFull())
 			deleteBottom();
 		else {
-			
+			deleteBottom();
 		}
 		
 	}
