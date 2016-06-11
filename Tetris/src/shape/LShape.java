@@ -7,11 +7,15 @@ public class LShape extends TetrisShape {
 	@Override
 	protected int[][] initShapeIndexs() {
 		// TODO Auto-generated method stub
-		int[][] retArray = { 
+		/*int[][] retArray = { 
 				{ 0, 0, 1, 0 }, 
 				{ 1, 1, 1, 0 }, 
 				{ 0, 0, 0, 0 }, 
 				{ 0, 0, 0, 0 } 
+				};*/
+		int[][] retArray = { 
+				{ 0, 0, 1 }, 
+				{ 1, 1, 1 }
 				};
 
 		return retArray;
