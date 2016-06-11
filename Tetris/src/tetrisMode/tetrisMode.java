@@ -183,5 +183,9 @@ public class tetrisMode {
 		}
 		
 	}
+	
+	public boolean isHit(){
+		
+	}
 
 }
