@@ -73,8 +73,24 @@ public class tetrisMode {
 		clear();
 		updateFieldByShape();
 		updateNodesByField();
-		deleteBottom();
+		//deleteBottom();
 	}
+	
+	/*private void updateShapeLocationByShape() {
+		int yLen = shapeLoc.length;
+		if(yLen == 0){
+			return;
+		}
+		int xLen = shapeLoc[0].length;
+		int[][] shapeIndex = shape.getTetrisShapeIndex();
+		for (int i = 0; i < yLen; i++) {
+			for (int j = 0; j < xLen; j++) {
+				int row = shapeLoc[i][j].getRow();
+				int col = shapeLoc[i][j].getCol();
+				field[row][col] = shapeIndex[i][j];
+			}
+		}
+	}*/
 	
 	private void updateFieldByShape() {
 		int yLen = shapeLoc.length;
@@ -167,6 +183,7 @@ public class tetrisMode {
 	
 	public void rotateShape(){
 		shape.tetrisShapeRotate();
+		addShapeToMode(shape, shapeLoc[0][0]);
 		Update();
 	}
 	
@@ -174,7 +191,7 @@ public class tetrisMode {
 		return false;
 	}
 	
-	public void deleteBottom(){
+	/*public void deleteBottom(){
 		//need to implement
 		if(isBottomFull())
 			deleteBottom();
@@ -186,6 +203,6 @@ public class tetrisMode {
 	
 	public boolean isHit(){
 		
-	}
+	}*/
 
 }
