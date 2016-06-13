@@ -202,7 +202,7 @@ public class tetrisMode {
 	}*/
 	
 	public boolean isHit(){
-		
+		return false;
 	}
 
 }
