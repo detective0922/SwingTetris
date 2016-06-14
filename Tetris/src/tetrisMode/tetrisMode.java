@@ -152,6 +152,9 @@ public class tetrisMode {
 	}*/
 	
 	public void moveShape(int dir){
+		if(isHit()){
+			return;
+		}
 		int moveX = 0;
 		int moveY = 0;
 		if (dir == Direction.DIR_UP) {
