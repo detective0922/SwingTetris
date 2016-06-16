@@ -152,7 +152,7 @@ public class tetrisMode {
 	}*/
 	
 	public void moveShape(int dir){
-		if(isHit()){
+		if(isHitBottom()){
 			return;
 		}
 		int moveX = 0;
@@ -204,7 +204,7 @@ public class tetrisMode {
 		
 	}*/
 	
-	public boolean isHit(){
+	public boolean isHitBottom(){
 		return false;
 	}
 
