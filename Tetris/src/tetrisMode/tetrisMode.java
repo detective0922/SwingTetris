@@ -203,6 +203,9 @@ public class tetrisMode {
 		}
 		
 	}*/
+	public void deleteBottomLine(){
+		
+	}
 	
 	public boolean isHitBottom(){
 		return false;
