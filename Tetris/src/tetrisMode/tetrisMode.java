@@ -204,9 +204,9 @@ public class tetrisMode {
 		
 	}*/
 	public void deleteBottomLine(){
-		/*if(isBottomFull()){
+		if(isBottomFull()){
 			
-		}*/
+		}
 	}
 	
 	public boolean isHitBottom(){
