@@ -206,7 +206,7 @@ public class tetrisMode {
 	public void deleteBottomLine(){
 		if(isBottomFull()){
 			for (int i = 0; i < field.length; i++) {
-				
+				field[field.length][i] = 0;
 			}
 		}
 	}
